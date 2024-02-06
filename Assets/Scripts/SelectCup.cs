@@ -8,8 +8,15 @@ public class SelectCup : MonoBehaviour
 
   // List of clickable objects
     public List<GameObject> clickableObjects = new List<GameObject>();
+    private WonLostUI wonLostUI;
 
-    private void Update()
+    private void Start(){
+        wonLostUI = FindFirstObjectByType<WonLostUI>();
+        wonLostUI.HideWonLostUI(); //Hide the UI when the game start
+       
+    }
+
+    private void Update() //Updated each frame
     {
         CheckClick();
     }
@@ -38,11 +45,12 @@ public class SelectCup : MonoBehaviour
 
     }
     private void CheckForBall(GameObject gameObject){
+        // Check if the object clicked have the ball or not, by cheking his parent
         if(gameObject.transform.parent.name == "Ball"){
-            Debug.Log("You Won!!");
+            wonLostUI.ShowWonLostUI(0);
         }
         else{
-            Debug.Log("You Lost!");
-        }
+            wonLostUI.ShowWonLostUI(1);    
+                }
     }
 }
