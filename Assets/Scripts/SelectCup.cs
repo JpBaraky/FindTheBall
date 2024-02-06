@@ -1,19 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SelectCup : MonoBehaviour
 {
-    public bool hasBall;
-   private void OnMouseDown()
+
+  // List of clickable objects
+    public List<GameObject> clickableObjects = new List<GameObject>();
+
+    private void Update()
     {
-        // This method is called when the object is clicked
-        Debug.Log("Object Clicked!");
-        if(hasBall){
-              Debug.Log("You found the ball!");
-        } else{
-            Debug.Log("You lost");
+        CheckClick();
+    }
+    private void CheckClick(){
+          // Check for mouse clicks
+ if (Input.GetMouseButtonDown(0))
+        {
+            CheckClickObject();
         }
-      
+    }
+    private void CheckClickObject(){
+         // Cast a ray from the camera to the mouse position
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+  
+
+            // Check if the ray hits an object with a collider
+            if (Physics.Raycast(ray, out hit))
+            {
+                // Check if the clicked object is in the list of clickableObjects
+                if (clickableObjects.Contains(hit.collider.gameObject))
+                {
+                    CheckForBall(hit.collider.gameObject);
+                }
+            }
+
+    }
+    private void CheckForBall(GameObject gameObject){
+        if(gameObject.transform.parent.name == "Ball"){
+            Debug.Log("You Won!!");
+        }
+        else{
+            Debug.Log("You Lost!");
+        }
     }
 }
