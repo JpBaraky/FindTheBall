@@ -11,10 +11,19 @@ public class CupSuffle : MonoBehaviour
     public float swapSpeed = 5f; // Speed of cup swapping
     public float swapDelay = 1f; // Delay between cup swaps
     public Button button;
+    private RiseCups riseCups;
+
+    private void Start(){
+
+        riseCups = FindFirstObjectByType<RiseCups>();
+    }
 
  
     private IEnumerator SwapCupsRoutine()
+    
     {
+        riseCups.RideDescend(cups);
+        yield return new WaitForSecondsRealtime(riseCups.riseDuration* 2);
         for (int i = 0; i < swapCount; i++)
         {
             // Randomly choose two cups to swap
