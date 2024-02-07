@@ -63,7 +63,8 @@ public class SelectCup : MonoBehaviour
         else{
             wonLostUI.ShowWonLostUI(1);    
                 }
-                button.interactable = true; //Enable the shuffle button
+                button.interactable = true; //Enable the shuffle button to be pressed again
+                
     }
 
 }
