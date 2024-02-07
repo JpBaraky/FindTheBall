@@ -40,8 +40,7 @@ public class CupSuffle : MonoBehaviour
             // Add a delay between swaps if needed
             yield return new WaitForSeconds(swapDelay);
         }
-         button.interactable = true;
-          
+   
     }
 
     private IEnumerator SwapCupsSemiCircle(Transform cup1, Transform cup2)
