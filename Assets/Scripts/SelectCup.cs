@@ -13,11 +13,14 @@ public class SelectCup : MonoBehaviour
     private WonLostUI wonLostUI;
     private RiseCups riseCups;
     Transform[] transformArray;
-    public Button button;
+    private Button button;
+    public static bool isChekingBall;
+
+
 
     private void Start(){
         wonLostUI = FindFirstObjectByType<WonLostUI>();
-        riseCups = FindFirstObjectByType<RiseCups>();
+        riseCups = FindFirstObjectByType<RiseCups>();    
         wonLostUI.HideWonLostUI(); //Hide the UI when the game start
         transformArray = clickableObjects.Select(go => go.transform).ToArray();
         button = GameObject.Find("Shuffle Button").GetComponent<Button>();
@@ -26,12 +29,16 @@ public class SelectCup : MonoBehaviour
 
     private void Update() //Updated each frame
     {
+        if(!CupSuffle.isShuffling && riseCups.canClick){
+       
         CheckClick();
+        }
     }
     private void CheckClick(){
           // Check for mouse clicks
  if (Input.GetMouseButtonDown(0))
         {
+           
             CheckClickObject();
         }
     }
@@ -53,7 +60,9 @@ public class SelectCup : MonoBehaviour
 
     }
     private void CheckForBall(GameObject gameObject){ 
-        
+        isChekingBall = true;
+        CupSuffle.isShuffling = true;
+        riseCups.canClick = false;
         riseCups.RideDescend(transformArray);
 
         // Check if the object clicked have the ball or not, by cheking his parent
@@ -63,8 +72,7 @@ public class SelectCup : MonoBehaviour
         else{
             wonLostUI.ShowWonLostUI(1);    
                 }
-                button.interactable = true; //Enable the shuffle button to be pressed again
-                
+      
     }
 
 }

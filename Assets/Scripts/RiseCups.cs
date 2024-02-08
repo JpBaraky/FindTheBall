@@ -1,15 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class RiseCups : MonoBehaviour
 {
   public float riseAmount = 1f;
     public float riseDuration = 1f;
+    public bool canClick = true;
+
+
+
 
     public void RiseObjects(Transform[] objectsToRise)
     {
+       
+
         foreach (Transform objTransform in objectsToRise)
         {
             if(objTransform.gameObject.name == "Cup With Ball"){
@@ -66,12 +73,20 @@ public class RiseCups : MonoBehaviour
         }
 
         objTransform.position = endPos;
+        canClick = true;
+        yield return new WaitForSecondsRealtime(0.1f);
+        if(SelectCup.isChekingBall == true){
+              SelectCup.isChekingBall = false;
+              CupSuffle.isGame = false;
+        }
     }
+        
+        
     private IEnumerator RiseAndDescend(Transform[] objectsToMove){
         RiseObjects(objectsToMove);
         yield return new WaitForSecondsRealtime(riseDuration);
         DescendObjects(objectsToMove);
-
+        
     }
     public void RideDescend(Transform[] objectsToMove){
         StartCoroutine(RiseAndDescend(objectsToMove));
