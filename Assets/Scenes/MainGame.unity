@@ -318,8 +318,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -840,8 +840,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -931,6 +931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   riseAmount: 0.5
   riseDuration: 0.5
+  canClick: 1
 --- !u!1 &587368869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,9 +1291,9 @@ MonoBehaviour:
   - {fileID: 587368870}
   - {fileID: 131564324}
   - {fileID: 595693802}
-  swapCount: 5
-  swapSpeed: 10
-  swapDelay: 0.1
+  swapCount: 100
+  swapSpeed: 100
+  swapDelay: 0
   button: {fileID: 143626838}
 --- !u!1 &728923977
 GameObject:
@@ -1766,7 +1767,7 @@ Transform:
   m_GameObject: {fileID: 1172262495}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.01000002, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 2, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1895,7 +1896,6 @@ MonoBehaviour:
   - {fileID: 595693801}
   - {fileID: 587368869}
   - {fileID: 1172262495}
-  button: {fileID: 0}
 --- !u!1 &1589272009
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,7 +1921,7 @@ Transform:
   m_GameObject: {fileID: 1589272009}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.014, z: -0.058}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
