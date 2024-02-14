@@ -68,9 +68,11 @@ public class SelectCup : MonoBehaviour
         // Check if the object clicked have the ball or not, by cheking his parent
         if(gameObject.transform.parent.name == "Cup With Ball"){
             wonLostUI.ShowWonLostUI(0);
+            ScoreSystem.playerScore++;
         }
         else{
             wonLostUI.ShowWonLostUI(1);    
+            ScoreSystem.playerScore = 0;
                 }
       
     }
